@@ -1,7 +1,9 @@
 ScoreKeeper::Application.routes.draw do
   resources :players
 
-  resources :games
+  resources :games do
+    resources :game_plays
+  end
 
   root :to => 'games#new'
 

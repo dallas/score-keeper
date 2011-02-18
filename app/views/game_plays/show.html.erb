@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game:</b>
+  <%= @game_play.game.name %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, @game, @game_play] %> |
+<%= link_to 'Back', [@game, :game_plays] %>
