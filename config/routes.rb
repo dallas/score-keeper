@@ -1,5 +1,7 @@
 ScoreKeeper::Application.routes.draw do
-  resources :players
+  resources :players do
+    resources :game_players
+  end
 
   resources :games do
     resources :game_plays

@@ -5,6 +5,18 @@
   <%= @game_play.game.name %>
 </p>
 
+<p>
+  <b>Current Players:</b><br />
+  <% @game_play.game_players(:include => :player).each do |game_player| %>
+    <%= image_tag avatar_url(game_player.player, 48) %>
+    <%= game_player.player.name %>:
+    <%= game_player.score || 0 %><br />
+  <% end %>
+</p>
+
+<p><b>Add Players:</b></p>
+<%= render 'players_form' %>
+
 
 <%= link_to 'Edit', [:edit, @game, @game_play] %> |
 <%= link_to 'Back', [@game, :game_plays] %>
