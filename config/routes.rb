@@ -1,13 +1,13 @@
 ScoreKeeper::Application.routes.draw do
-  resources :game_players
-
   resources :players
 
-  resources :games do
-    resources :game_plays
-  end
+  resources :game_players
 
-  root :to => 'games#new'
+  resources :game_plays
+
+  resources :games
+
+  root :to => 'game_plays#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

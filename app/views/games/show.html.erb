@@ -10,7 +10,5 @@
   <%= @game.scoring_strategy %>
 </p>
 
-
-<%= link_to 'Play', [:new, @game, :game_play] %> |
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%= link_to 'Edit', [:edit, @game] %> |
+<%= link_to 'Back', :games %>

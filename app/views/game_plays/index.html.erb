@@ -11,13 +11,13 @@
 <% @game_plays.each do |game_play| %>
   <tr>
     <td><%= game_play.game.name %></td>
-    <td><%= link_to 'Show', [@game, game_play] %></td>
-    <td><%= link_to 'Edit', [:edit, @game, game_play] %></td>
-    <td><%= link_to 'Destroy', [@game, game_play], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', game_play %></td>
+    <td><%= link_to 'Edit', [:edit, game_play] %></td>
+    <td><%= link_to 'Destroy', game_play, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Game play', [:new, @game, :game_play] %>
+<%= link_to 'New Game play', :new_game_play %>

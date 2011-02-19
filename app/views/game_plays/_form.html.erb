@@ -1,4 +1,4 @@
-<%= form_for([@game, @game_play]) do |f| %>
+<%= form_for @game_play do |f| %>
   <% if @game_play.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@game_play.errors.count, "error") %> prohibited this game_play from being saved:</h2>
@@ -11,11 +11,19 @@
     </div>
   <% end %>
 
+  <% if @game_play.new_record? %>
+    <div class="field">
+      <%= f.label :game_name, 'Game' %><br />
+      <%= f.text_field :game_name %>
+    </div>
+  <% else %>
+    <h3>Playing <%= @game_play.game.name %></h3>
+  <% end %>
   <div class="field">
     <%= f.label :player_ids, 'Add Players' %><br />
     <%= f.collection_select :player_ids, Player.all.reject{|p| @game_play.player_ids.include?(p.id)}, :id, :name, {}, :multiple => true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit @game_play.new_record? ? 'Let’s Play' : 'Continue Playing' %>
   </div>
 <% end %>

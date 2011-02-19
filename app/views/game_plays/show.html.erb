@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @game_play.game.name %></h2>
+<h2><%= @game.name %></h2>
 
 <section id="players">
   <% @game_players.each do |game_player| %>
@@ -18,6 +18,5 @@
   <% end %>
 </section>
 
-
-<%= link_to 'Edit', [:edit, @game, @game_play] %> |
-<%= link_to 'Back', [@game, :game_plays] %>
+<%= link_to 'Edit', [:edit, @game_play] %> |
+<%= link_to 'Back', :game_plays %>
