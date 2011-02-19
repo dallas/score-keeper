@@ -16,7 +16,8 @@ class GamePlaysController < ApplicationController
   def show
     @game = Game.find(params[:game_id])
     @game_play = @game.game_plays.find(params[:id])
-    @game_players = @game_play.game_players.all(:include => :player, :order => 'score desc')
+    sort_order = @game.scoring_strategy_as_sql_order
+    @game_players = @game_play.game_players.all(:include => :player, :order => "score #{sort_order}")
 
     respond_to do |format|
       format.html # show.html.erb
