@@ -16,6 +16,12 @@
       <%= f.label :game_name, 'Game' %><br />
       <%= f.text_field :game_name %>
     </div>
+    <script type="text/javascript" charset="utf-8">
+      (function() {
+        var gameNames = <%= Game.all.map(&:name).to_json.html_safe %>;
+        $('#game_play_game_name').autocomplete(gameNames);
+      })();
+    </script>
   <% else %>
     <h3>Playing <%= @game_play.game.name %></h3>
   <% end %>
