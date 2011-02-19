@@ -1,21 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Game:</b>
-  <%= @game_play.game.name %>
-</p>
+<h2><%= @game_play.game.name %></h2>
 
-<p>
-  <b>Current Players:</b><br />
-  <% @game_play.game_players(:include => :player).each do |game_player| %>
-    <%= image_tag avatar_url(game_player.player, 48) %>
-    <%= game_player.player.name %>:
-    <%= game_player.score || 0 %><br />
+<section id="players">
+  <% @game_players.each do |game_player| %>
+    <article id="<%= dom_id(game_player) %>">
+      <section class="player-avatar"><%= image_tag avatar_url(game_player.player, 48) %></section>
+      <section class="player-name"><%= game_player.player.name %></section>
+      <section class="score"><%= game_player.score || 0 %></section>
+      <section class="update-score">
+        <%= form_for game_player, :remote => true do |f| %>
+          <%= f.text_field :add_to_score %>
+          <%= f.submit '+ to score' %>
+        <% end %>
+      </section>
+    </article>
   <% end %>
-</p>
-
-<p><b>Add Players:</b></p>
-<%= render 'players_form' %>
+</section>
 
 
 <%= link_to 'Edit', [:edit, @game, @game_play] %> |

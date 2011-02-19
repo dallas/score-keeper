@@ -1,0 +1,16 @@
+<% if @success %>
+  $('#<%= dom_id @game_player %> .score').html(<%= @game_player.score.to_json %>);
+  $('#<%= dom_id @game_player %> .update-score :text').val(0);
+  var player_list = $('#players');
+  var players = player_list.children('article').get();
+  players.sort(function(a, b) {
+    var compA = parseInt($(a).find('.score').text());
+    var compB = parseInt($(b).find('.score').text());
+    return (compA < compB) ? 1 : (compA > compB) ? -1 : 0;
+  });
+  $.each(players, function(_, player) {
+    player_list.append(player);
+  })
+<% else %>
+  $('#notice').html('I can’t do it, cap’n!');
+<% end %>
