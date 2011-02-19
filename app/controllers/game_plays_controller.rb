@@ -1,6 +1,9 @@
 class GamePlaysController < ApplicationController
   def index
-    @game_plays = GamePlay.all(:include => :game)
+    @game_plays = GamePlay.all(
+      :include  => [:game, {:game_players => :player}],
+      :order    => 'created_at desc'
+    )
   end
 
   def show

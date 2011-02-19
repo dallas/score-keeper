@@ -1,8 +1,10 @@
-<h1>Listing game_plays</h1>
+<h1>All Games Played</h1>
 
 <table>
   <tr>
     <th>Game</th>
+    <th>Played on</th>
+    <th>Played by</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +13,12 @@
 <% @game_plays.each do |game_play| %>
   <tr>
     <td><%= game_play.game.name %></td>
+    <td><%= game_play.created_at.to_s(:long) %></td>
+    <td>
+      <% game_play.game_players.map(&:player).each do |player| %>
+        <%= image_tag avatar_url(player, 16), :title => player.name %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', game_play %></td>
     <td><%= link_to 'Edit', [:edit, game_play] %></td>
     <td><%= link_to 'Destroy', game_play, :confirm => 'Are you sure?', :method => :delete %></td>

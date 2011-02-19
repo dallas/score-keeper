@@ -21,7 +21,9 @@
   <% end %>
   <div class="field">
     <%= f.label :player_ids, 'Add Players' %><br />
-    <%= f.collection_select :player_ids, Player.all.reject{|p| @game_play.player_ids.include?(p.id)}, :id, :name, {}, :multiple => true %>
+    <% players = Player.all
+       players.reject!{|p| @game_play.player_ids.include?(p.id)} unless @game_play.new_record? %>
+    <%= f.collection_select :player_ids, players, :id, :name, {}, :multiple => true %>
   </div>
   <div class="actions">
     <%= f.submit @game_play.new_record? ? 'Let’s Play' : 'Continue Playing' %>

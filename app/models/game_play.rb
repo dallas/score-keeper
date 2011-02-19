@@ -2,7 +2,8 @@ class GamePlay < ActiveRecord::Base
   belongs_to :game
   has_many :game_players
 
-  validates :game_id, :presence => true
+  validates :game_name, :presence => true
+  validate :must_have_at_least_two_players
 
   def game_name=(name)
     self.game = Game.find_or_create_by_name(name)
@@ -21,5 +22,13 @@ class GamePlay < ActiveRecord::Base
 
   def player_ids
     game_players.map(&:player_id)
+  end
+
+private
+
+  def must_have_at_least_two_players
+    unless game_players.size >= 2
+      errors.add(:player_ids, 'Please add at least 2 players to the game!')
+    end
   end
 end
