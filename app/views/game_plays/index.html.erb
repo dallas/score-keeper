@@ -16,7 +16,7 @@
     <td><%= game_play.created_at.to_s(:long) %></td>
     <td>
       <% game_play.game_players.map(&:player).each do |player| %>
-        <%= image_tag avatar_url(player, 16), :title => player.name %>
+        <%= avatar_image_tag player, 20, :title => player.name %>
       <% end %>
     </td>
     <td><%= link_to 'Show', game_play %></td>

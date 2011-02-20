@@ -12,7 +12,7 @@
 
 <% @players.each do |player| %>
   <tr>
-    <td><%= image_tag avatar_url(player, 48) %></td>
+    <td><%= avatar_image_tag player, 48 %></td>
     <td><%= player.name %></td>
     <td><%= player.email %></td>
     <td><%= link_to 'Show', player %></td>

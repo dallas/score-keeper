@@ -18,10 +18,10 @@
         <article id="<%= dom_id(game_player) %>" class="grid_<%= index.zero? ? '4' : '3' %>">
           <div class="inner clearfix">
             <section class="player-avatar-medium">
-              <%= image_tag avatar_url(game_player.player, 138), :size => '138x138' %>
+              <%= avatar_image_tag game_player.player, 138 %>
             </section>
             <section class="player-avatar-large">
-              <%= image_tag avatar_url(game_player.player, 198), :size => '198x198' %>
+              <%= avatar_image_tag game_player.player, 198 %>
             </section>
             <section class="player-name"><%= game_player.player.name %></section>
             <section class="score"><%= game_player.score || 0 %></section>
