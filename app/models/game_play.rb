@@ -1,6 +1,6 @@
 class GamePlay < ActiveRecord::Base
   belongs_to :game
-  has_many :game_players
+  has_many :game_players, :dependent => :destroy
 
   validates :game_name, :presence => true
   validate :must_have_at_least_two_players
