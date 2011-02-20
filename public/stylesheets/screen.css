@@ -1,0 +1,165 @@
+@import url(reset.css);
+@import url(960.css);
+@import url(http://fonts.googleapis.com/css?family=Kreon);
+@import url(http://fonts.googleapis.com/css?family=Copse);
+
+body {
+  background-color:#333;
+  color:#eee;
+  font-family:'Copse', Helvetica, serif;
+  font-size:18px;
+  font-weight:400;
+}
+
+a {
+  color:#369;
+  text-decoration:none;
+}
+
+.button {
+  background-color:#eee;
+  -webkit-border-radius:15px;
+  -moz-border-radius:15px;
+  -ms-border-radius:15px;
+  -o-border-radius:15px;
+  border-radius:15px;
+  color:#333;
+  display:inline-block;
+  font-size:18px;
+  padding:5px 15px 6px;
+}
+.button:hover {
+  background-color:#999;
+}
+.button:active {
+  background-color:#666;
+  color:#ccc;
+}
+
+.info-button {
+  font-size:10px;
+  padding:2px 5px;
+}
+
+.right {
+  float:right;
+}
+
+#header {
+  border-bottom:1px solid #090909;
+  min-height:95px;
+  padding-top:45px;
+}
+
+#header header {
+  font-size:72px;
+  font-weight:700;
+}
+
+#header h1 {
+  display:inline-block;
+}
+
+#header .button {
+  margin-top:42px;
+}
+
+#main {
+  background-color:#666;
+  border-bottom:1px solid #373737;
+  border-top:1px solid #858585;
+  color:#333;
+}
+
+#players {
+  margin-top:40px;
+}
+
+#players article {
+  border:1px solid #333;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -ms-border-radius:10px;
+  -o-border-radius:10px;
+  border-radius:10px;
+  display:block;
+  float:left;
+  margin-bottom:40px;
+}
+
+#players .inner {
+  background-color:#b5b5b5;
+  border:1px solid #eee;
+  -webkit-border-radius:8px;
+  -moz-border-radius:8px;
+  -ms-border-radius:8px;
+  -o-border-radius:8px;
+  border-radius:8px;
+  padding:8px;
+}
+
+#players article.grid_4 {
+/*  margin-right:700px;*/
+}
+
+#players article .player-avatar-medium,
+#players article .player-avatar-large {
+  border:1px solid #666;
+  margin:0 auto 5px;
+}
+
+#players article .player-avatar-medium img,
+#players article .player-avatar-large img {
+  display:block;
+}
+
+#players article .player-avatar-medium {
+  display:block;
+  width:138px;
+}
+
+#players article.grid_4 .player-avatar-medium,
+#players article .player-avatar-large {
+  display:none;
+}
+
+#players article.grid_4 .player-avatar-large {
+  display:block;
+  width:198px;
+}
+
+#players article .player-name {
+  font-size:24px;
+}
+
+#players article.grid_4 .player-name {
+  font-size:36px;
+}
+
+#players article .score {
+  font-size:18px;
+  font-weight:700;
+}
+
+#players article.grid_4 .score {
+  font-size:22px;
+}
+
+#players article .update-score {
+/*  display:none;*/
+}
+
+#players article .update-score input[type=text] {
+  width:25px;
+}
+
+#footer {
+  border-top:1px solid #282828;
+  min-height:45px;
+  padding:15px 0;
+}
+
+#footer h3 {
+  font-size:36px;
+  font-weight:300;
+}

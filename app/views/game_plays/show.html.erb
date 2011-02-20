@@ -1,22 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<h2><%= @game.name %></h2>
-
-<section id="players">
-  <% @game_players.each do |game_player| %>
-    <article id="<%= dom_id(game_player) %>">
-      <section class="player-avatar"><%= image_tag avatar_url(game_player.player, 48) %></section>
-      <section class="player-name"><%= game_player.player.name %></section>
-      <section class="score"><%= game_player.score || 0 %></section>
-      <section class="update-score">
-        <%= form_for game_player, :remote => true do |f| %>
-          <%= f.text_field :add_to_score %>
-          <%= f.submit '+ to score' %>
-        <% end %>
-      </section>
-    </article>
-  <% end %>
+<section id="header">
+  <header class="container_16">
+    <h1>
+      <%= @game.name %><%= link_to 'i', [:edit, @game], :class => 'button info-button' %>
+    </h1>
+    <%= link_to 'configure', [:edit, @game_play], :class => 'button right' %>
+  </header>
 </section>
 
-<%= link_to 'Edit', [:edit, @game_play] %> |
-<%= link_to 'Back', :game_plays %>
+<section id="main">
+  <section class="container_16">
+    <section id="messages">
+      <p id="notice"><%= notice %></p>
+    </section>
+
+    <section id="players" class="clearfix" data-sort-order="<%= @game.scoring_strategy_as_sql_order %>">
+      <% @game_players.each_with_index do |game_player, index| %>
+        <article id="<%= dom_id(game_player) %>" class="grid_<%= index.zero? ? '4' : '3' %>">
+          <div class="inner clearfix">
+            <section class="player-avatar-medium">
+              <%= image_tag avatar_url(game_player.player, 138), :size => '138x138' %>
+            </section>
+            <section class="player-avatar-large">
+              <%= image_tag avatar_url(game_player.player, 198), :size => '198x198' %>
+            </section>
+            <section class="player-name"><%= game_player.player.name %></section>
+            <section class="score"><%= game_player.score || 0 %></section>
+            <section class="update-score">
+              <%= form_for game_player, :remote => true do |f| %>
+                <%= f.text_field :add_to_score %>
+                <%= f.submit '+ to score' %>
+              <% end %>
+            </section>
+          </div>
+        </article>
+      <% end %>
+    </section>
+  </section>
+</section>
+
+<footer id="footer">
+  <section class="container_16">
+    <h3>Let’s Play!</h3>
+  </section>
+</footer>

@@ -1,21 +1,5 @@
 <% if @success %>
-  $('#<%= dom_id @game_player %> .score').html(<%= @game_player.score.to_json %>);
-  $('#<%= dom_id @game_player %> .update-score :text').val(0);
-  var player_list = $('#players');
-  var players = player_list.children('article').get();
-  players.sort(function(a, b) {
-    var compA, compB, sortOrder, sorted;
-    compA = parseInt($(a).find('.score').text());
-    compB = parseInt($(b).find('.score').text());
-    sortOrder = '<%= @game.scoring_strategy_as_sql_order %>';
-    sorted = 0;
-    if (compA < compB) { sorted = sortOrder == 'asc' ? -1 : 1; }
-    if (compA > compB) { sorted = sortOrder == 'asc' ? 1 : -1; }
-    return sorted;
-  });
-  $.each(players, function(_, player) {
-    player_list.append(player);
-  })
+  updatePlayerScore('#<%= dom_id @game_player %>', <%= @game_player.score.to_json %>);
 <% else %>
   $('#notice').html('I can’t do it, cap’n!');
 <% end %>
