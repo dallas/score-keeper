@@ -10,7 +10,6 @@ class GamePlayer < ActiveRecord::Base
   end
 
   def add_to_score
-    return 0 if self.previous_score.nil?
-    self.score.to_i - self.previous_score.to_i
+    nil
   end
 end

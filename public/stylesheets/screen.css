@@ -1,12 +1,13 @@
 @import url(reset.css);
 @import url(960.css);
-@import url(http://fonts.googleapis.com/css?family=Kreon);
+/*@import url(http://fonts.googleapis.com/css?family=Kreon);*/
 @import url(http://fonts.googleapis.com/css?family=Copse);
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script);
 
 body {
   background-color:#333;
   color:#eee;
-  font-family:'Copse', Helvetica, serif;
+  font-family:'Copse', Georgia, serif;
   font-size:18px;
   font-weight:400;
 }
@@ -48,20 +49,32 @@ a {
 #header {
   border-bottom:1px solid #090909;
   min-height:95px;
-  padding-top:45px;
+  padding-top:25px;
 }
 
 #header header {
+  position:relative;
+}
+
+#header h1 {
   font-size:72px;
   font-weight:700;
 }
 
-#header h1 {
-  display:inline-block;
+#header h5 {
+  font-family:'Dancing Script', Helvetica, sans-serif;
+  font-size:24px;
+  margin-bottom:0.5em;
 }
 
-#header .button {
-  margin-top:42px;
+#header .info-button {
+  margin-left:4px;
+}
+
+#header .configure-button {
+  bottom:0;
+  position:absolute;
+  right:5px;
 }
 
 #main {
@@ -84,6 +97,7 @@ a {
   border-radius:10px;
   display:block;
   float:left;
+  margin-top:40px;
   margin-bottom:40px;
 }
 
@@ -100,6 +114,7 @@ a {
 
 #players article.grid_4 {
 /*  margin-right:700px;*/
+  margin-top:0;
 }
 
 #players article .player-avatar-medium,
@@ -150,7 +165,28 @@ a {
 }
 
 #players article .update-score input[type=text] {
-  width:25px;
+  background-color:#eee;
+  border:1px solid #444;
+  font-size:14px;
+  padding:4px 4px;
+  width:35px;
+}
+
+#players article .update-score input[type=submit] {
+  background-color:#666;
+  border:1px solid;
+  border-color:#444;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -ms-border-radius:10px;
+  -o-border-radius:10px;
+  border-radius:10px;
+  color:#eee;
+  font-family:'Copse', Helvetica, sans-serif;
+  font-size:14px;
+  letter-spacing:0.1em;
+  margin:0;
+  padding:1px 8px 3px;
 }
 
 #footer {
@@ -160,6 +196,7 @@ a {
 }
 
 #footer h3 {
+  font-family:'Dancing Script', 'Copse', Helvetica, sans-serif;
   font-size:36px;
   font-weight:300;
 }

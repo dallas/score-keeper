@@ -3,7 +3,11 @@
     <h1>
       <%= @game.name %><%= link_to 'i', [:edit, @game], :class => 'button info-button' %>
     </h1>
-    <%= link_to 'configure', [:edit, @game_play], :class => 'button right' %>
+    <h5>
+      <%= @game.scoring_strategy == 'low' ? 'Lower' : 'Higher' %>
+      scores are better!
+    </h5>
+    <%= link_to 'configure', [:edit, @game_play], :class => 'button configure-button' %>
   </header>
 </section>
 
@@ -28,7 +32,7 @@
             <section class="update-score">
               <%= form_for game_player, :remote => true do |f| %>
                 <%= f.text_field :add_to_score %>
-                <%= f.submit '+ to score' %>
+                <%= f.submit '+' %>
               <% end %>
             </section>
           </div>
