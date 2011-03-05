@@ -1,5 +1,3 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
 function updatePlayerScore(selector, score) {
   $(selector + ' .score').html(score);
   $(selector + ' .update-score :text').val(0);
@@ -12,16 +10,16 @@ function resortPlayers() {
   players     = getPlayers(playerList);
   sortOrder   = playerList.attr('data-sort-order');
   players.sort(function(a, b) {
-    var compA, compB, sortValue;
-    compA   = parseInt($(a).find('.score').text());
-    compB   = parseInt($(b).find('.score').text());
-    sortValue  = 0;
-    if (compA < compB) { sortValue = sortOrder == 'asc' ? -1 : 1; }
-    if (compA > compB) { sortValue = sortOrder == 'asc' ? 1 : -1; }
-    return sortValue;
+    var A, B;
+    A = parseInt($(a).find('.score').text());
+    B = parseInt($(b).find('.score').text());
+    if (A < B) return sortOrder == 'asc' ? -1 : 1;
+    if (A > B) return sortOrder == 'asc' ? 1 : -1;
+    return 0;
   });
   $.each(players, function(_, player) { playerList.append(player); });
   updatePlayers(playerList);
+  $('#graph, #graph + br.clear').insertAfter($('#players .player.grid_4'));
 }
 
 function updatePlayers(playerList) {
@@ -30,4 +28,4 @@ function updatePlayers(playerList) {
   players.eq(0).removeClass('grid_3').addClass('grid_4');
 }
 
-function getPlayers(playerList) { return playerList.children('article'); }
+function getPlayers(playerList) { return playerList.children('.player'); }

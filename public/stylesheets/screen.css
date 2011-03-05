@@ -85,10 +85,11 @@ a {
 }
 
 #players {
-  margin-top:40px;
+  margin-bottom:20px;
+  margin-top:20px;
 }
 
-#players article {
+#players .outer {
   border:1px solid #333;
   -webkit-border-radius:10px;
   -moz-border-radius:10px;
@@ -97,8 +98,8 @@ a {
   border-radius:10px;
   display:block;
   float:left;
-  margin-top:40px;
-  margin-bottom:40px;
+  margin-bottom:20px;
+  margin-top:20px;
 }
 
 #players .inner {
@@ -112,59 +113,50 @@ a {
   padding:8px;
 }
 
-#players article.grid_4 {
-/*  margin-right:700px;*/
-  margin-top:0;
-}
-
-#players article .player-avatar-medium,
-#players article .player-avatar-large {
+#players .player-avatar-medium,
+#players .player-avatar-large {
   border:1px solid #666;
   margin:0 auto 5px;
 }
 
-#players article .player-avatar-medium img,
-#players article .player-avatar-large img {
+#players .player-avatar-medium img,
+#players .player-avatar-large img {
   display:block;
 }
 
-#players article .player-avatar-medium {
+#players .player-avatar-medium {
   display:block;
   width:138px;
 }
 
-#players article.grid_4 .player-avatar-medium,
-#players article .player-avatar-large {
+#players .grid_4 .player-avatar-medium,
+#players .player-avatar-large {
   display:none;
 }
 
-#players article.grid_4 .player-avatar-large {
+#players .grid_4 .player-avatar-large {
   display:block;
   width:198px;
 }
 
-#players article .player-name {
+#players .player-name {
   font-size:24px;
 }
 
-#players article.grid_4 .player-name {
+#players .grid_4 .player-name {
   font-size:36px;
 }
 
-#players article .score {
+#players .score {
   font-size:18px;
   font-weight:700;
 }
 
-#players article.grid_4 .score {
-  font-size:22px;
-}
+#players .grid_4 .score { font-size:22px; }
 
-#players article .update-score {
-/*  display:none;*/
-}
+#players .update-score {}
 
-#players article .update-score input[type=text] {
+#players .update-score input[type=text] {
   background-color:#eee;
   border:1px solid #444;
   font-size:14px;
@@ -172,7 +164,7 @@ a {
   width:35px;
 }
 
-#players article .update-score input[type=submit] {
+#players .update-score input[type=submit] {
   background-color:#666;
   border:1px solid;
   border-color:#444;
@@ -187,6 +179,12 @@ a {
   letter-spacing:0.1em;
   margin:0;
   padding:1px 8px 3px;
+}
+
+#graph .content {
+  height:305px;
+  margin:10px 0;
+  padding:10px 0;
 }
 
 #footer {

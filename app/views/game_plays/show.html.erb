@@ -19,24 +19,34 @@
 
     <section id="players" class="clearfix" data-sort-order="<%= @game.scoring_strategy_as_sql_order %>">
       <% @game_players.each_with_index do |game_player, index| %>
-        <article id="<%= dom_id(game_player) %>" class="grid_<%= index.zero? ? '4' : '3' %>">
-          <div class="inner clearfix">
-            <section class="player-avatar-medium">
-              <%= avatar_image_tag game_player.player, 138 %>
-            </section>
-            <section class="player-avatar-large">
-              <%= avatar_image_tag game_player.player, 198 %>
-            </section>
-            <section class="player-name"><%= game_player.player.name %></section>
-            <section class="score"><%= game_player.score || 0 %></section>
-            <section class="update-score">
-              <%= form_for game_player, :remote => true do |f| %>
-                <%= f.text_field :add_to_score %>
-                <%= f.submit '+' %>
-              <% end %>
-            </section>
+        <article id="<%= dom_id(game_player) %>" class="player grid_<%= index.zero? ? '4' : '3' %>">
+          <div class="outer">
+            <div class="inner clearfix">
+              <section class="player-avatar-medium">
+                <%= avatar_image_tag game_player.player, 138 %>
+              </section>
+              <section class="player-avatar-large">
+                <%= avatar_image_tag game_player.player, 198 %>
+              </section>
+              <section class="player-name"><%= game_player.player.name %></section>
+              <section class="score"><%= game_player.score || 0 %></section>
+              <section class="update-score">
+                <%= form_for game_player, :remote => true do |f| %>
+                  <%= f.text_field :add_to_score %>
+                  <%= f.submit '+' %>
+                <% end %>
+              </section>
+            </div>
           </div>
         </article>
+        <% if index.zero? %>
+          <section id="graph" class="grid_11 prefix_1">
+            <section class="content">
+              
+            </section>
+          </section>
+          <br class="clear" />
+        <% end %>
       <% end %>
     </section>
   </section>
