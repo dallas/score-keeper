@@ -4,7 +4,7 @@
 # development environment upon cd'ing into the directory
 
 # First we specify our desired <ruby>[@<gemset>], the @gemset name is optional.
-environment_id="ruby-1.9.2-p180@score-keeper"
+environment_id="ruby-1.9.2-p136@score-keeper"
 
 #
 # First we attempt to load the desired environment directly from the environment
@@ -33,15 +33,13 @@ fi
 #
 # If you use bundler and would like to run bundle each time you enter the
 # directory, you can uncomment the following code.
-#
-#   # Ensure that Bundler is installed. Install it if it is not.
-#   if ! command -v bundle >/dev/null; then
-#      printf "The rubygem 'bundler' is not installed. Installing it now.\n"
-#      gem install bundler
-#   fi
-#
-#   # Bundle while reducing excess noise.
-#   printf "Bundling your gems. This may take a few minutes on a fresh clone.\n"
-#   bundle | grep -v '^Using ' | grep -v ' is complete' | sed '/^$/d'
-#
 
+# Ensure that Bundler is installed. Install it if it is not.
+if ! command -v bundle >/dev/null; then
+   printf "The rubygem 'bundler' is not installed. Installing it now.\n"
+   gem install bundler
+fi
+
+# Bundle while reducing excess noise.
+printf "Bundling your gems. This may take a few minutes on a fresh clone.\n"
+bundle | grep -v '^Using ' | grep -v ' is complete' | sed '/^$/d'
