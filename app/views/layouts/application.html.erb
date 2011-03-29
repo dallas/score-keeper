@@ -5,6 +5,7 @@
   <% is_game_play_show = %w[game_plays show] == [controller.controller_name, controller.action_name] %>
   <%= stylesheet_link_tag 'scaffold' unless is_game_play_show %>
   <%= stylesheet_link_tag 'screen', :media => 'screen' if is_game_play_show %>
+  <%= stylesheet_link_tag 'jquery.autocomplete', :media => 'screen' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
