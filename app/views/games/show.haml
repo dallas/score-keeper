@@ -1,0 +1,13 @@
+#notice= notice
+
+%p
+  %b Name:
+  = @game.name
+
+%p
+  %b Scoring strategy:
+  = @game.scoring_strategy
+
+= link_to 'Edit', [:edit, @game]
+|
+= link_to 'Back', :games
