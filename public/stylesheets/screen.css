@@ -17,6 +17,8 @@ a {
   text-decoration:none;
 }
 
+input[type=submit] { cursor:pointer; }
+
 .button {
   background-color:#eee;
   -webkit-border-radius:15px;
@@ -27,7 +29,7 @@ a {
   color:#333;
   display:inline-block;
   font-size:18px;
-  padding:5px 15px 6px;
+  padding:3px 15px 6px;
 }
 .button:hover {
   background-color:#999;
