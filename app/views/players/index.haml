@@ -1,0 +1,23 @@
+%h1 Listing players
+
+%table
+  %tr
+    %th Avatar
+    %th Name
+    %th Email
+    %th
+    %th
+    %th
+
+  - @players.each do |player|
+    %tr
+      %td= avatar_image_tag player, 48
+      %td= player.name
+      %td= player.email
+      %td= link_to 'Show', player
+      %td= link_to 'Edit', [:edit, player]
+      %td= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Player', :new_player
