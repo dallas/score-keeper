@@ -1,5 +1,0 @@
-<% if @success %>
-  updatePlayerScore('#<%= dom_id @game_player %>', <%= @game_player.score.to_json %>);
-<% else %>
-  $('#notice').html('I can’t do it, cap’n!');
-<% end %>
