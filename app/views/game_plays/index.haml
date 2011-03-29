@@ -1,0 +1,25 @@
+%h1 All Games Played
+
+%table
+  %tr
+    %th Game
+    %th Played on
+    %th Played by
+    %th
+    %th
+    %th
+
+  - @game_plays.each do |game_play|
+    %tr
+      %td= game_play.game.try(:name)
+      %td= game_play.created_at.to_s(:long)
+      %td
+        - game_play.game_players.map(&:player).each do |player|
+          = avatar_image_tag player, 20, :title => player.name
+      %td= link_to 'Show', game_play
+      %td= link_to 'Edit', [:edit, game_play]
+      %td= link_to 'Destroy', game_play, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Game play', :new_game_play
