@@ -1,0 +1,36 @@
+%section#header
+  %header.container_16
+    %h1
+      = @game.name
+      = link_to 'i', [:edit, @game], :class => 'button info-button'
+    %h5
+      = @game.scoring_strategy == 'low' ? 'Lower' : 'Higher'
+      scores are better!
+    = link_to 'configure', [:edit, @game_play], :class => 'button configure-button'
+
+%section#main
+  %section.container_16
+    %section#messages
+      %p#notice= notice
+    %section#players.clearfix{:data => {'sort-order' => @game.scoring_strategy_as_sql_order}}
+      - @game_players.each_with_index do |game_player, index|
+        - _dom_id = dom_id(game_player)
+        %article.player{:id => _dom_id, :class => "grid_#{index.zero? ? '4' : '3'}"}
+          .outer
+            .inner.clearfix
+              %section.player-avatar-medium= avatar_image_tag game_player.player, 138
+              %section.player-avatar-large= avatar_image_tag game_player.player, 198
+              %section.player-name= game_player.player.name
+              %section.score= game_player.score || 0
+              %section.update-score
+                = form_for game_player, :format => 'json', :remote => true do |f|
+                  = f.text_field :add_to_score, :id => "#{_dom_id}_add_to_score"
+                  = f.submit '+'
+        - if index.zero?
+          %section#graph.grid_11.prefix_1
+            %section.content
+          %br.clear
+
+%footer#footer
+  %section.container_16
+    %h3 Let’s Play!
