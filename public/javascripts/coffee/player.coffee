@@ -1,0 +1,2 @@
+window.Player = ->
+  alert "barfoo"
