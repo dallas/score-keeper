@@ -12,10 +12,10 @@
   %section.container_16
     %section#messages
       %p#notice= notice
-    %section#players.clearfix{:data => {'sort-order' => @game.scoring_strategy_as_sql_order}}
+    %section.body.clearfix{:data => {'sort-order' => @game.scoring_strategy_as_sql_order}}
       - @game_players.each_with_index do |game_player, index|
         - _dom_id = dom_id(game_player)
-        %article.player{:id => _dom_id, :class => "grid_#{index.zero? ? '4' : '3'}"}
+        %article.player.tile{:id => _dom_id, :class => "grid_#{index.zero? ? '4' : '3'}"}
           .outer
             .inner.clearfix
               %section.player-avatar-medium= avatar_image_tag game_player.player, 138
