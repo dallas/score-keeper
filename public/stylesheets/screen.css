@@ -92,15 +92,12 @@ input[type=submit] { cursor:pointer; }
 }
 
 #players .outer {
-  border:1px solid #484848;
+  border:1px solid #333;
   -webkit-border-radius:10px;
   -moz-border-radius:10px;
   -ms-border-radius:10px;
   -o-border-radius:10px;
   border-radius:10px;
-  -moz-box-shadow:0 0 10px #333;
-  -webkit-box-shadow:0 0 10px #333;
-  box-shadow:0 0 10px #333;
   display:block;
   float:left;
   margin-bottom:20px;
@@ -109,15 +106,12 @@ input[type=submit] { cursor:pointer; }
 
 #players .inner {
   background-color:#b5b5b5;
-  border:1px solid #d3d3d3;
+  border:1px solid #eee;
   -webkit-border-radius:8px;
   -moz-border-radius:8px;
   -ms-border-radius:8px;
   -o-border-radius:8px;
   border-radius:8px;
-  -moz-box-shadow:inset 0 0 7px 3px #ddd;
-  -webkit-box-shadow:inset 0 0 7px 3px #ddd;
-  box-shadow:inset 0 0 7px 3px #ddd;
   padding:8px;
 }
 
@@ -162,7 +156,7 @@ input[type=submit] { cursor:pointer; }
 
 #players .grid_4 .score { font-size:22px; }
 
-#players .player .update-score {}
+#players .update-score {}
 
 #players .update-score input[type=text] {
   background-color:#eee;
