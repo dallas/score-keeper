@@ -1,8 +1,19 @@
 %section#games
 
+- @games.each do |game|
+  = game.name
+  %br
+  = game.scoring_strategy
+  %br
+
 %script#game-template{:type => 'text/template'}
   %article.game.tile.grid_3
     .outer
       .inner
         %p.name {{name}}
         %p.scoring-strategy {{scoring_strategy}}
+
+:javascript
+  $('body').bind('app:loaded', function() {
+    window.App.Games.refresh(#{@games.to_json})
+  });

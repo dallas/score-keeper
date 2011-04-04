@@ -1,10 +1,10 @@
-window.App.Game = Backbone.Model.extend()
+Game = Backbone.Model.extend()
 
-window.App.Games = Backbone.Collection.extend
-  model:  window.App.Game
+Games = Backbone.Collection.extend
+  model:  Game
   url:    '/games'
 
-window.App.GameView = Backbone.View.extend
+GameView = Backbone.View.extend
   tagName: 'section'
 
   className: 'game'
@@ -31,10 +31,11 @@ window.App.GameView = Backbone.View.extend
     $(this.el).html this.template this.model.toJSON()
     return this
 
-games = new window.App.Games()
-games.fetch()
-console.log games.models
-games.each (game) ->
-  view = new window.App.GameView
-    model: game
-  $('#games').append view.el
+window.App.Games = new Games()
+$('body').trigger 'app:loaded'
+# window.App.games.fetch()
+# console.log games.models
+# games.each (game) ->
+#   view = new window.App.GameView
+#     model: game
+#   $('#games').append view.el

@@ -3,6 +3,10 @@ class GamesController < ApplicationController
     respond_with @games = Game.all
   end
 
+  def edit
+    respond_with @game = Game.find(params[:id])
+  end
+
   def show
     respond_with Game.find params[:id]
   end

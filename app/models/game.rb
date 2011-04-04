@@ -3,8 +3,8 @@ class Game < ActiveRecord::Base
 
   validates :name, :scoring_strategy, :presence => true
 
-  def as_json(options = {})
-    super options.merge(:only => [:id, :name, :scoring_strategy])
+  def as_json(options = nil)
+    super (options || {}).merge(:only => [:id, :name, :scoring_strategy])
   end
 
   def scoring_strategy_as_sql_order
