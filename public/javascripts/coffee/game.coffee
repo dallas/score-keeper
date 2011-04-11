@@ -1,4 +1,8 @@
-Game = Backbone.Model.extend()
+Game = Backbone.Model.extend
+  initialize: ->
+    this.view = new GameView
+      model: this
+    $('#games').append this.view.el
 
 Games = Backbone.Collection.extend
   model:  Game
@@ -9,7 +13,7 @@ GameView = Backbone.View.extend
 
   className: 'game'
 
-  template: _.template($('#game-template').html())
+  template: _.template $('#game-template').html()
 
   events:
     'dblclick .name': 'dblClickedName'
@@ -18,7 +22,7 @@ GameView = Backbone.View.extend
   initialize: ->
     _.bindAll this, 'render'
     this.model.bind 'change', this.render
-    this.model.view = this
+    # this.model.view = this
     this.render()
 
   dblClickedName: ->
@@ -32,10 +36,3 @@ GameView = Backbone.View.extend
     return this
 
 window.App.Games = new Games()
-$('body').trigger 'app:loaded'
-# window.App.games.fetch()
-# console.log games.models
-# games.each (game) ->
-#   view = new window.App.GameView
-#     model: game
-#   $('#games').append view.el

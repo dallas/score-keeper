@@ -1,5 +1,4 @@
-app = window.App
+# start the history so our controllers work
+# Backbone.history.start()
 
-# controllers
-new app.GamesController()
-Backbone.history.start()
+
