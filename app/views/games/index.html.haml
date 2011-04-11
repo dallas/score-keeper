@@ -1,13 +1,1 @@
-%section#games
-
-%script#game-template{:type => 'text/template'}
-  %article.game.tile.grid_3
-    .outer
-      .inner
-        %p.name {{name}}
-        %p.scoring-strategy {{scoring_strategy}}
-
-:javascript
-  $('body').bind('app:loaded', function() {
-    window.App.Games.refresh(#{@games.to_json})
-  });
+%section#games{:data => {:games => @games.to_json}}

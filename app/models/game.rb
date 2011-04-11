@@ -1,6 +1,8 @@
 class Game < ActiveRecord::Base
   has_many :game_plays, :dependent => :destroy
 
+  attr_accessible :name, :scoring_strategy
+
   validates :name, :scoring_strategy, :presence => true
 
   def as_json(options = nil)
