@@ -1,4 +1,6 @@
 class GamePlaysController < ApplicationController
+  def index; @game_plays = GamePlay.all end
+
   def new
     @game_play = GamePlay.new
   end
