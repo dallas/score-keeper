@@ -21,36 +21,45 @@ GameView = Backbone.View.extend
 
   strategyFieldTemplate: _.template '<div class="edit-scoring-strategy">
     <a>low</a><br />
-    <a>high</a>
+    <a>high</a><br />
+    <span class="cancel">cancel</span>
   </div>'
 
   events:
-    'dblclick .name': 'dblClickedName'
-    'dblclick .scoring-strategy': 'dblClickedStrategy'
+    'dblclick .name': 'editName'
     'keyup .edit-name': 'saveName'
-    'click .edit-scoring-strategy': 'saveScoringStrategy'
+    'blur .edit-name': 'closeEditName'
+    'dblclick .scoring-strategy': 'editScoringStrategy'
+    'click .edit-scoring-strategy a': 'saveScoringStrategy'
+    'click .edit-scoring-strategy .cancel': 'closeEditScoringStrategy'
 
   initialize: ->
     _.bindAll this, 'render'
     this.model.bind 'change', this.render
     this.render()
 
-  dblClickedName: ->
+  editName: ->
     this.$('.name').after(this.nameFieldTemplate this.model.toJSON()).hide()
     this.$('.edit-name').focus()
 
   saveName: (event) ->
     if event.which == 13
       this.model.save name: $(event.target).val()
-      this.$('.edit-name').remove()
-      this.$('.name').show()
+      this.closeEditName()
 
-  dblClickedStrategy: ->
+  closeEditName: ->
+    this.$('.edit-name').remove() if this.$('.edit-name')
+    this.$('.name').show()
+
+  editScoringStrategy: ->
     this.$('.scoring-strategy').after(this.strategyFieldTemplate this.model.toJSON()).hide()
 
   saveScoringStrategy: (event) ->
     this.model.save scoring_strategy: $(event.target).html()
-    this.$('.edit-scoring-strategy').remove()
+    this.closeEditScoringStrategy()
+
+  closeEditScoringStrategy: ->
+    this.$('.edit-scoring-strategy').remove() if this.$('.edit-scoring-strategy')
     this.$('.scoring-strategy').show()
 
   render: ->
