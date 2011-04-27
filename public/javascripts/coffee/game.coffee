@@ -19,10 +19,16 @@ GameView = Backbone.View.extend
 
   nameFieldTemplate: _.template '<input type="text" value="{{name}}" class="edit-name">'
 
+  strategyFieldTemplate: _.template '<div class="edit-scoring-strategy">
+    <a>low</a><br />
+    <a>high</a>
+  </div>'
+
   events:
     'dblclick .name': 'dblClickedName'
     'dblclick .scoring-strategy': 'dblClickedStrategy'
     'keyup .edit-name': 'saveName'
+    'click .edit-scoring-strategy': 'saveScoringStrategy'
 
   initialize: ->
     _.bindAll this, 'render'
@@ -31,6 +37,7 @@ GameView = Backbone.View.extend
 
   dblClickedName: ->
     this.$('.name').after(this.nameFieldTemplate this.model.toJSON()).hide()
+    this.$('.edit-name').focus()
 
   saveName: (event) ->
     if event.which == 13
@@ -38,8 +45,13 @@ GameView = Backbone.View.extend
       this.$('.edit-name').remove()
       this.$('.name').show()
 
-  dblClickedStrategy: (event) ->
-    console.log 'double-clicked the scoring strategy!'
+  dblClickedStrategy: ->
+    this.$('.scoring-strategy').after(this.strategyFieldTemplate this.model.toJSON()).hide()
+
+  saveScoringStrategy: (event) ->
+    this.model.save scoring_strategy: $(event.target).html()
+    this.$('.edit-scoring-strategy').remove()
+    this.$('.scoring-strategy').show()
 
   render: ->
     $(this.el).html this.template this.model.toJSON()
