@@ -26,7 +26,7 @@ GameView = Backbone.View.extend
 
   initialize: ->
     _.bindAll this, 'render'
-    this.model.bind 'change save', this.render
+    this.model.bind 'change', this.render
     this.render()
 
   dblClickedName: ->
@@ -35,6 +35,8 @@ GameView = Backbone.View.extend
   saveName: (event) ->
     if event.which == 13
       this.model.save name: $(event.target).val()
+      this.$('.edit-name').remove()
+      this.$('.name').show()
 
   dblClickedStrategy: (event) ->
     console.log 'double-clicked the scoring strategy!'
@@ -44,4 +46,4 @@ GameView = Backbone.View.extend
     return this
 
 App.Games = new Games()
-$('body').trigger 'games:loaded'
+App.trigger 'games:loaded'
